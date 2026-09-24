@@ -13,8 +13,8 @@ template anyone can drop into their own course repo and adapt.
 
 | | |
 |---|---|
-| [`.claude/agents/course-architect.md`](.claude/agents/course-architect.md) | The subagent definition. Fill in `[COURSE NAME]` and `[COURSE CODE]`, drop it in your own repo's `.claude/agents/`, and Claude Code will treat it as a dedicated instructional-design assistant scoped to that course. |
-| [`.claude/skills/course-architect/SKILL.md`](.claude/skills/course-architect/SKILL.md) | The `/course-architect` slash command. Type `/course-architect <task>` (e.g. `/course-architect audit Module 2 objectives`) and Claude Code hands the task to the subagent above. |
+| [`.claude/agents/course-architect.md`](.claude/agents/course-architect.md) | The subagent definition. It is course-agnostic: each task names one course and its folder under `courses/`, and the agent stays scoped to that course. |
+| [`.claude/skills/course-architect/SKILL.md`](.claude/skills/course-architect/SKILL.md) | The `/course-architect` slash command. Type `/course-architect <course code> <task>` (e.g. `/course-architect BAN6303 audit Module 2 objectives`); use one chat per course and Claude Code hands the task to the subagent above. |
 | [`docs/clo-mlo-alignment.md`](docs/clo-mlo-alignment.md) | Three rules for well-formed objectives (one verb, measurable, correct Bloom's hierarchy) and the technique for fixing objectives that break them. |
 | [`docs/assessment-gap-analysis.md`](docs/assessment-gap-analysis.md) | How to check whether a module's real assessments measure its real objectives — not just what they're tagged with. |
 | [`docs/qti-quiz-generation.md`](docs/qti-quiz-generation.md) | How to hand-author a Canvas-importable QTI quiz package (Matching, Multiple Dropdowns, feedback) without any special tooling. |
@@ -26,10 +26,11 @@ template anyone can drop into their own course repo and adapt.
 1. Copy `.claude/agents/course-architect.md` into your own course repo's
    `.claude/agents/` folder, and `.claude/skills/course-architect/` into its
    `.claude/skills/` folder (this enables the `/course-architect` command).
-2. Replace `[COURSE NAME]` and `[COURSE CODE]` with your course's actual name
-   and code.
-3. Put your syllabus, course map, and module materials in that repo so the
-   agent has something to cross-reference.
+2. Put each course's syllabus, course map, and module materials in its own
+   folder, `courses/<COURSE-CODE>/`, so the agent has something to
+   cross-reference. `/course-architect` creates the folder for a new course.
+3. Start a separate chat for each course and name the course on first use,
+   e.g. `/course-architect BAN6303 audit Module 1 objectives`.
 4. Read through `docs/clo-mlo-alignment.md` and run the same three-rule check
    against your own CLOs/MLOs.
 5. As you build or review assessments, use `docs/assessment-gap-analysis.md`
