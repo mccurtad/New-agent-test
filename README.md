@@ -14,6 +14,7 @@ template anyone can drop into their own course repo and adapt.
 | | |
 |---|---|
 | [`.claude/agents/course-architect.md`](.claude/agents/course-architect.md) | The subagent definition. Fill in `[COURSE NAME]` and `[COURSE CODE]`, drop it in your own repo's `.claude/agents/`, and Claude Code will treat it as a dedicated instructional-design assistant scoped to that course. |
+| [`.claude/skills/course-architect/SKILL.md`](.claude/skills/course-architect/SKILL.md) | The `/course-architect` slash command. Type `/course-architect <task>` (e.g. `/course-architect audit Module 2 objectives`) and Claude Code hands the task to the subagent above. |
 | [`docs/clo-mlo-alignment.md`](docs/clo-mlo-alignment.md) | Three rules for well-formed objectives (one verb, measurable, correct Bloom's hierarchy) and the technique for fixing objectives that break them. |
 | [`docs/assessment-gap-analysis.md`](docs/assessment-gap-analysis.md) | How to check whether a module's real assessments measure its real objectives — not just what they're tagged with. |
 | [`docs/qti-quiz-generation.md`](docs/qti-quiz-generation.md) | How to hand-author a Canvas-importable QTI quiz package (Matching, Multiple Dropdowns, feedback) without any special tooling. |
@@ -23,7 +24,8 @@ template anyone can drop into their own course repo and adapt.
 ## Quickstart — using this for your own course
 
 1. Copy `.claude/agents/course-architect.md` into your own course repo's
-   `.claude/agents/` folder.
+   `.claude/agents/` folder, and `.claude/skills/course-architect/` into its
+   `.claude/skills/` folder (this enables the `/course-architect` command).
 2. Replace `[COURSE NAME]` and `[COURSE CODE]` with your course's actual name
    and code.
 3. Put your syllabus, course map, and module materials in that repo so the
