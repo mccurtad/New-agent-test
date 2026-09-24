@@ -61,7 +61,7 @@ usually doesn't need more than Complete/Incomplete.
 
 ## Worked example
 
-[`examples/ban-6303/module-1-discussion.md`](../../../../examples/ban-6303/module-1-discussion.md)
+[`examples/ban-6303/module-1-discussion.md`](../examples/ban-6303/module-1-discussion.md)
 shows a real discussion that started as a combined icebreaker + content prompt
 (flagged as misplaced by the instructor — it was tagged to the wrong module),
 was split into an Orientation intro discussion and a content-only module

@@ -70,6 +70,6 @@ verb to the evidence you'll actually collect.
 
 ## Worked example
 
-See [`examples/ban-6303/course-map.md`](../../../../examples/ban-6303/course-map.md) for
+See [`examples/ban-6303/course-map.md`](../examples/ban-6303/course-map.md) for
 a full before/after pass through this method on a real (if illustrative)
 course.

@@ -1,6 +1,6 @@
 # Worked Example: BAN 6303 (Machine Learning for Business Analytics)
 
-This walks through the [CLO/MLO alignment method](../../.claude/skills/course-architect/references/clo-mlo-alignment.md)
+This walks through the [CLO/MLO alignment method](../../references/clo-mlo-alignment.md)
 applied to one real course's Course-Level Objectives and its first module's
 objectives.
 
@@ -35,7 +35,7 @@ tightened without changing the topic each objective covers.
 
 ## Assessment coverage for Module 1
 
-Applying the [gap-analysis method](../../.claude/skills/course-architect/references/assessment-gap-analysis.md)
+Applying the [gap-analysis method](../../references/assessment-gap-analysis.md)
 across this module's knowledge check, an auto-graded practice quiz, and a
 discussion:
 

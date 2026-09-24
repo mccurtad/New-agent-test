@@ -76,21 +76,54 @@ New Quiz:
 
 ## Validate before you ship it
 
+**Step 1 — structural check.** Run the bundled validator on the package
+directory or the finished `.zip`:
+
 ```bash
-python3 -c "import xml.etree.ElementTree as ET; ET.parse('your_quiz_id.xml')"
+python3 scripts/validate_qti.py your-quiz.zip
 ```
 
-confirms the XML is at least well-formed. It does **not** confirm Canvas will
-import it correctly — QTI import behavior (especially feedback display on
-composite item types, and Classic→New-Quizzes conversion) is genuinely
-finicky and hasn't been verified here against a live Canvas instance.
-**Always import into a sandbox/test course first** and click through every
-question before rolling a generated package into a real course.
+Beyond well-formed XML, it checks that:
+
+- `imsmanifest.xml` is at the top level of the zip and every file it lists
+  exists;
+- identifiers agree across the manifest, quiz XML, and `assessment_meta.xml`;
+- every item has a recognised `question_type` and numeric `points_possible`;
+- every scoring rule points to a real response and a real answer choice, and
+  every Matching/Dropdown response has a correct answer;
+- a fully correct answer scores exactly 100% of the item;
+- every Multiple Dropdowns `[placeholder]` has a matching dropdown, and vice
+  versa;
+- `question_count` and `points_possible` in `assessment_meta.xml` match the
+  items;
+- `correct_fb` / `general_incorrect_fb` feedback blocks are present
+  (warning only).
+
+It exits non-zero on any error.
+
+**Step 2 — sandbox import (required).** The validator cannot tell you how
+Canvas will actually render or grade the package; QTI import behaviour
+(especially feedback on composite item types, and Classic→New Quizzes
+conversion) is finicky and has not been verified here against a live Canvas
+instance. Import into a sandbox or test course first and work through this
+checklist:
+
+1. The import finishes without errors or warnings in the import log.
+2. The quiz appears with the expected title, quiz type, attempts, and total
+   points.
+3. Every question appears, in order, with the expected question type.
+4. Take the quiz as the Student View with **all answers correct**: the score
+   is 100%, and each item shows its "correct" feedback.
+5. Retake with **one wrong answer per item**: partial credit is as expected,
+   and each item shows its "incorrect" feedback.
+6. If you used "Convert content to New Quizzes", repeat steps 3–5 in the
+   converted quiz, since conversion can change question types.
+
+Only then copy the quiz into a live course.
 
 ## Worked example
 
-[`assets/qti-example/`](../assets/qti-example/) (bundled with this skill; also at
-[`examples/ban-6303/module-1-practice-quiz/`](../../../../examples/ban-6303/module-1-practice-quiz/) in the source repo)
+[`examples/ban-6303/module-1-practice-quiz/`](../examples/ban-6303/module-1-practice-quiz/)
 is a complete, working QTI package: two Matching items, one Multiple Dropdowns
 item, one Matching-as-Ordering item, all with feedback — built as an ungraded
 practice quiz to reinforce a module's MLOs alongside its graded knowledge

@@ -31,7 +31,7 @@ whose materials are in the current repository. Work only on that course.
 |---|---|
 | Writing, auditing, or fixing CLOs/MLOs | [references/clo-mlo-alignment.md](references/clo-mlo-alignment.md) |
 | Checking whether assessments cover the MLOs; closing gaps | [references/assessment-gap-analysis.md](references/assessment-gap-analysis.md) |
-| Building an auto-graded Canvas quiz (QTI .zip) | [references/qti-quiz-generation.md](references/qti-quiz-generation.md) and [assets/qti-example/](assets/qti-example/) |
+| Building an auto-graded Canvas quiz (QTI .zip) | [references/qti-quiz-generation.md](references/qti-quiz-generation.md), [examples/ban-6303/module-1-practice-quiz/](examples/ban-6303/module-1-practice-quiz/), and [scripts/validate_qti.py](scripts/validate_qti.py) |
 | Designing a discussion prompt, peer reply, or rubric | [references/discussion-design.md](references/discussion-design.md) |
 
 Load only the reference(s) the task needs. A full module review typically
@@ -57,19 +57,24 @@ MLOs that lack any constructed-response evidence. Re-run the table after
 every change.
 
 **3. QTI quiz generation.** Use the bundled package in
-[assets/qti-example/](assets/qti-example/) as the structural template
+[examples/ban-6303/module-1-practice-quiz/](examples/ban-6303/module-1-practice-quiz/)
+as the structural template
 (`imsmanifest.xml` + `<quiz_id>/<quiz_id>.xml` + `<quiz_id>/assessment_meta.xml`).
 Use Matching for categorization and ordering, Multiple Dropdowns for
 fill-in passages, and include `correct_fb` / `general_incorrect_fb` feedback
-on each item. After writing the files:
+on each item. After writing the files, zip them with the manifest at the top
+level and run the bundled validator on the result; fix every error before
+handing the package over:
 
 ```bash
-python3 -c "import xml.etree.ElementTree as ET; [ET.parse(f) for f in ['imsmanifest.xml', '<quiz_id>/<quiz_id>.xml', '<quiz_id>/assessment_meta.xml']]"
-zip -r <QuizName>.zip imsmanifest.xml <quiz_id>/
+cd <package-dir> && zip -r <QuizName>.zip imsmanifest.xml <quiz_id>/
+python3 <this-skill-dir>/scripts/validate_qti.py <QuizName>.zip
 ```
 
-Always tell the user that well-formed XML does not guarantee a clean Canvas
-import, and that the package must be tested in a sandbox course first.
+The validator checks structure and scoring logic only. Always give the user
+the sandbox test checklist from
+[references/qti-quiz-generation.md](references/qti-quiz-generation.md) and
+state that the package has not been import-tested in Canvas.
 
 **4. Discussion design.** Short initial post (~150–250 words) applying a
 concept to a self-chosen example, plus a peer reply (~30–75 words) naming one
@@ -80,6 +85,6 @@ differentiation is warranted.
 
 ## Worked example
 
-If this skill is used inside its source repository, `examples/ban-6303/`
-contains a full before/after pass (course map, coverage table, split
-discussion, and practice quiz). Use it as a model of output format only.
+[examples/ban-6303/](examples/ban-6303/) contains a full before/after pass
+(course map, coverage table, split discussion, and practice quiz). Use it as
+a model of output format only; never copy its content into another course.
