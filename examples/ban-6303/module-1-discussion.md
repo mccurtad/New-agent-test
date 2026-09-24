@@ -1,6 +1,6 @@
 # Worked Example: Module 1 Discussion
 
-Illustrates the [discussion design pattern](../../docs/discussion-design.md):
+Illustrates the [discussion design pattern](../../.claude/skills/course-architect/references/discussion-design.md):
 splitting a combined icebreaker + content prompt into two separate, correctly
 placed activities.
 

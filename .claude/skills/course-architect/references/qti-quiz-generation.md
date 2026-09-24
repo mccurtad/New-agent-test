@@ -89,7 +89,8 @@ question before rolling a generated package into a real course.
 
 ## Worked example
 
-[`examples/ban-6303/module-1-practice-quiz/`](../examples/ban-6303/module-1-practice-quiz/)
+[`assets/qti-example/`](../assets/qti-example/) (bundled with this skill; also at
+[`examples/ban-6303/module-1-practice-quiz/`](../../../../examples/ban-6303/module-1-practice-quiz/) in the source repo)
 is a complete, working QTI package: two Matching items, one Multiple Dropdowns
 item, one Matching-as-Ordering item, all with feedback — built as an ungraded
 practice quiz to reinforce a module's MLOs alongside its graded knowledge

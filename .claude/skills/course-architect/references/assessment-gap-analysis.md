@@ -64,8 +64,8 @@ to add one.
 
 ## Worked example
 
-[`examples/ban-6303/course-map.md`](../examples/ban-6303/course-map.md) and
+[`examples/ban-6303/course-map.md`](../../../../examples/ban-6303/course-map.md) and
 the files under
-[`examples/ban-6303/`](../examples/ban-6303/) show this process run against a
+[`examples/ban-6303/`](../../../../examples/ban-6303/) show this process run against a
 real module: a knowledge check, an auto-graded practice quiz, and a discussion,
 checked against four MLOs, with two genuine gaps found and closed.

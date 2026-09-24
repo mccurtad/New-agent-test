@@ -1,6 +1,6 @@
 # Module 1 Practice Quiz (QTI)
 
-A working example of the [QTI generation method](../../../docs/qti-quiz-generation.md):
+A working example of the [QTI generation method](../../../.claude/skills/course-architect/references/qti-quiz-generation.md):
 an ungraded practice quiz built to reinforce Module 1's four MLOs, with
 feedback baked in.
 
